@@ -161,6 +161,8 @@ module.exports = {
         if (!state || state.length < 2) {
             throw new Error('The "state" parameter is invalid when trying to complete PayPal authentication.'+state);
         }
+	console.log('configs= '+configs);	
+	console.log('configs[stage2d0065]= '+configs['stage2d0065']);
         var env = state[0];
         var returnTokenOnQueryString = state.length > 2 ? (!!state[2]) : false;
         var url = tsUrl(env);
