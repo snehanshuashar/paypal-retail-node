@@ -158,16 +158,17 @@ module.exports = {
             return callback(new Error(util.format('Login with PayPal Error! %s: %s', query.error, query.error_description)));
         }
         var state = JSON.parse(query.state);
-	console.log('configs= '+configs);	
+	console.log('configs= '+JSON.stringify(configs));	
         if (!state || state.length < 2) {
             throw new Error('The "state" parameter is invalid when trying to complete PayPal authentication.'+state);
         }
 	console.log('test');	
-	console.log('configs[stage2d0065]= '+configs['stage2d0065']);
-        var env = state[0];
-        var returnTokenOnQueryString = state.length > 2 ? (!!state[2]) : false;
+	console.log('configs[stage2d0065]= '+JSON.stringify(configs['stage2d0065']));
+        var env = configs['stage2d0065'];//state[0];
+        var returnTokenOnQueryString = true;//state.length > 2 ? (!!state[2]) : false;
         var url = tsUrl(env);
         var cfg = configs[env];
+	console.log('cfg= '+JSON.stringify(cfg));
         wreck.post(url, {
             payload: util.format('grant_type=authorization_code&code=%s&redirect_uri=%s', encodeURIComponent(query.code), encodeURIComponent(cfg.returnUrl)),
             json: 'force',
