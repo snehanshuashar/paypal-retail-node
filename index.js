@@ -164,7 +164,7 @@ module.exports = {
         }
 	console.log('test');	
 	console.log('configs[stage2d0065]= '+JSON.stringify(configs['stage2d0065']));
-        var env = configs['stage2d0065'];//state[0];
+        var env = 'stage2d0065';//state[0];
         var returnTokenOnQueryString = true;//state.length > 2 ? (!!state[2]) : false;
         var url = tsUrl(env);
         var cfg = configs[env];
