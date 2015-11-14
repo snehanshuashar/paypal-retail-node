@@ -162,7 +162,7 @@ module.exports = {
             var state = JSON.parse(query.state);
         }
         catch (x) {
-            error('Error in parsing state: ' + x.message);
+            console.log('Error in parsing state: ' + x.message);
         }
         console.log('state= '+JSON.stringify(state));
 	    console.log('configs= '+JSON.stringify(configs));
