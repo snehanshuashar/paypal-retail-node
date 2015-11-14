@@ -159,7 +159,7 @@ module.exports = {
         }
         console.log('state= '+query.state);
         try {
-            var state = JSON.parse(query.state);
+            var state = JSON.parse("['stage2d0065','RetailSdkTestSample']");//query.state);
         }
         catch (x) {
             console.log('Error in parsing state: ' + x.message);
