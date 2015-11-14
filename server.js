@@ -149,8 +149,8 @@ function configurePayPal() {
                 info[envI].returnUrl = info[envI].returnUrl || combineUrl(ROOT_URL, 'returnFromPayPal');
                 info[envI].refreshUrl = info[envI].refreshUrl || combineUrl(ROOT_URL, 'refresh');
                 paypal.configure(info[envI].name, info[envI]);
+                checkScopes(info[envI].name);
             }
-            checkScopes(info[envI].name);
         } catch (x) {
             error('Invalid PAYPAL_CUSTOM_ENVIRONMENT: ' + x.message);
         }
