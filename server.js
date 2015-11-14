@@ -146,7 +146,7 @@ function configurePayPal() {
             //[{"name":"stage2d0065","clientId":"RetailSdkTestSample","secret":"A8VERY8SECRET8VALUE0"}]
             //console.log('info[0]= '+JSON.stringify(info[0]));
             for (var envI = 0; envI < info.length; envI++) {
-                console.log('Configuring', info[envI].name, 'environment');
+                console.log('Configuring', info.info[envI].name, 'environment');
                 info[envI].returnUrl = info[envI].returnUrl || combineUrl(ROOT_URL, 'returnFromPayPal');
                 info[envI].refreshUrl = info[envI].refreshUrl || combineUrl(ROOT_URL, 'refresh');
                 paypal.configure(info[envI].name, info[envI]);
