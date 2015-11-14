@@ -157,6 +157,7 @@ module.exports = {
         if (query.error) {
             return callback(new Error(util.format('Login with PayPal Error! %s: %s', query.error, query.error_description)));
         }
+        console.log('state= '+query.state);
         var state = JSON.parse(query.state);
 	    console.log('configs= '+JSON.stringify(configs));
         console.log('state= '+JSON.stringify(state));
