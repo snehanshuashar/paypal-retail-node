@@ -135,9 +135,8 @@ function configurePayPal() {
     if (PAYPAL_CUSTOM_ENVIRONMENT) {
         try {
             var info = JSON.parse(new Buffer(PAYPAL_CUSTOM_ENVIRONMENT, 'base64').toString('utf8'));
-            console.log(JSON.stringify('info= '+info));
-            console.log(JSON.stringify('info[0]= '+info[0]));
-            console.log(JSON.stringify(info));
+            console.log('info= '+JSON.stringify(info));
+            console.log('info[0]= '+JSON.stringify(info[0]));
             for (var envI = 0; envI < info.length; envI++) {
                 console.log('Configuring', info[envI].name, 'environment');
                 info[envI].returnUrl = info[envI].returnUrl || combineUrl(ROOT_URL, 'returnFromPayPal');
