@@ -158,8 +158,9 @@ module.exports = {
             return callback(new Error(util.format('Login with PayPal Error! %s: %s', query.error, query.error_description)));
         }
         console.log('state= '+query.state);
+        var state = [];
         try {
-            var state = JSON.parse("['stage2d0065','RetailSdkTestSample']");//query.state);
+            state = JSON.parse("['stage2d0065','RetailSdkTestSample']");//query.state);
         }
         catch (x) {
             console.log('Error in parsing state: ' + x.message);
