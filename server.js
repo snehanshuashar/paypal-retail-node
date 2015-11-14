@@ -134,7 +134,7 @@ function configurePayPal() {
     }
     if (PAYPAL_CUSTOM_ENVIRONMENT) {
         try {
-            var info = {info:[{name:"stage2d0065","clientId":"RetailSdkTestSample","secret":"A8VERY8SECRET8VALUE0"}]};
+            var info = [{name:"stage2d0065","clientId":"RetailSdkTestSample","secret":"A8VERY8SECRET8VALUE0"}];
             var infoold = JSON.parse(new Buffer(PAYPAL_CUSTOM_ENVIRONMENT, 'base64').toString('utf8'));
             //var info = JSON.parse(infostr);
             console.log('infoold= '+JSON.stringify(infoold));
@@ -142,7 +142,6 @@ function configurePayPal() {
             console.log('info.length= '+info.length);
             console.log('info type= '+ typeof (info));
             console.log('info[0]= '+ info[0]);
-            console.log('info.info[0]= '+ info.info[0]);
             //[{"name":"stage2d0065","clientId":"RetailSdkTestSample","secret":"A8VERY8SECRET8VALUE0"}]
             //console.log('info[0]= '+JSON.stringify(info[0]));
             for (var envI = 0; envI < info.length; envI++) {
