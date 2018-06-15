@@ -157,22 +157,14 @@ module.exports = {
         if (query.error) {
             return callback(new Error(util.format('Login with PayPal Error! %s: %s', query.error, query.error_description)));
         }
-        console.log('state= '+query.state);
-        var state = [];
-        try {
-            state = ['stage2d0065','RetailSdkTestSample1'];//JSON.parse(query.state);
-        }
-        catch (x) {
-            console.log('Error in parsing state: ' + x.message);
-        }
-        console.log('state= '+JSON.stringify(state));
-	    console.log('configs= '+JSON.stringify(configs));
+        var state = JSON.parse(query.state);
+        //console.log('configs= '+JSON.stringify(configs));
         if (!state || state.length < 2) {
             throw new Error('The "state" parameter is invalid when trying to complete PayPal authentication.'+state);
         }
     	//console.log('configs[stage2d0065]= '+JSON.stringify(configs['stage2d0065']));
         var env = state[0];
-        var returnTokenOnQueryString = state.length > 2 ? (!!state[2]) : false;
+        var returnTokenOnQueryString = true;//state.length > 2 ? (!!state[2]) : false;
         var url = tsUrl(env);
         var cfg = configs[env];
         console.log('cfg= '+JSON.stringify(cfg));
