@@ -135,17 +135,14 @@ function configurePayPal() {
     if (PAYPAL_CUSTOM_ENVIRONMENT) {
         try {
             var info = JSON.parse(new Buffer(PAYPAL_CUSTOM_ENVIRONMENT, 'base64').toString('utf8'));
-            console.log('info= '+JSON.stringify(info));
-            console.log('info.length= '+info.length);
-            console.log('info type= '+ typeof (info));
-            console.log('info[0]= '+ info[0]);
+            console.log(JSON.stringify(info));
             for (var envI = 0; envI < info.length; envI++) {
                 console.log('Configuring', info[envI].name, 'environment');
                 info[envI].returnUrl = info[envI].returnUrl || combineUrl(ROOT_URL, 'returnFromPayPal');
                 info[envI].refreshUrl = info[envI].refreshUrl || combineUrl(ROOT_URL, 'refresh');
                 paypal.configure(info[envI].name, info[envI]);
-                checkScopes(info[envI].name);
             }
+            checkScopes(info[envI].name);
         } catch (x) {
             error('Invalid PAYPAL_CUSTOM_ENVIRONMENT: ' + x.message);
         }
